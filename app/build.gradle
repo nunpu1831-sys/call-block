@@ -1,0 +1,27 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.changnyeong.callblock'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.changnyeong.callblock"
+        minSdk 29
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        debug {
+            // 디버그 빌드: AGP가 자동 서명하므로 폰에 바로 설치 가능
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
