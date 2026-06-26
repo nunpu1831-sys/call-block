@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <application
@@ -28,15 +27,6 @@
                 <action android:name="android.telecom.CallScreeningService"/>
             </intent-filter>
         </service>
-
-        <!-- 통화 종료 감지 -> '차단?' 알림 띄우기 -->
-        <receiver
-            android:name=".CallEndReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.PHONE_STATE"/>
-            </intent-filter>
-        </receiver>
 
         <!-- 알림의 '차단' 버튼 처리 -->
         <receiver

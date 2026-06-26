@@ -29,11 +29,13 @@ public class CallScreener extends CallScreeningService {
             b.setSkipNotification(true);
             respondToCall(details, b.build());
         } else {
-            // 허용. 끝나고 물어보려고 번호 저장.
-            if (incoming && !number.isEmpty()) {
-                Store.setLast(this, number);
-            }
+            // 허용. 차단 안 된 수신 전화면 '차단?' 알림을 바로 띄운다.
+            // (전화 오는 순간 알림이 생기고, 통화가 끝난 뒤에도 알림창에 남아 있어
+            //  거기서 '차단'을 한 번 누르면 됨)
             respondToCall(details, b.build());
+            if (incoming && !number.isEmpty()) {
+                Notifications.showBlockPrompt(this, number);
+            }
         }
     }
 }

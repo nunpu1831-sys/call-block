@@ -17,10 +17,19 @@ public class Store {
         return c.getSharedPreferences(PREF, Context.MODE_PRIVATE);
     }
 
-    /** 숫자와 +만 남겨 번호를 통일된 형태로. */
+    /**
+     * 번호를 한 가지 형태로 통일.
+     * - 숫자만 남기고
+     * - 국가코드 82(+82)로 시작하면 맨 앞을 0으로 바꿔 국내 형식과 맞춘다.
+     *   예: "+82 10-1234-5678" -> "01012345678",  "010-1234-5678" -> "01012345678"
+     */
     static String normalize(String number) {
         if (number == null) return "";
-        return number.replaceAll("[^0-9+]", "");
+        String d = number.replaceAll("[^0-9]", "");
+        if (d.startsWith("82")) {
+            d = "0" + d.substring(2);
+        }
+        return d;
     }
 
     static Set<String> getBlocked(Context c) {

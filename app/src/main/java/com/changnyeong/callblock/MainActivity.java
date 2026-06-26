@@ -69,10 +69,6 @@ public class MainActivity extends Activity {
 
     private void requestRuntimePerms() {
         List<String> need = new ArrayList<>();
-        if (checkSelfPermission(android.Manifest.permission.READ_PHONE_STATE)
-                != PackageManager.PERMISSION_GRANTED) {
-            need.add(android.Manifest.permission.READ_PHONE_STATE);
-        }
         if (Build.VERSION.SDK_INT >= 33
                 && checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
                 != PackageManager.PERMISSION_GRANTED) {
